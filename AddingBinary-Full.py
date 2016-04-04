@@ -8,7 +8,7 @@
 # The program was built to add simple bytes. Going over will result in an error.
 # Will add a cap to limit the final product.
 #-----------
-
+import eoz_module
 
 #Full Way of doing it
 #=========================================#
@@ -18,7 +18,20 @@ def add_indexes(index_1, index_2):
     return (int(index_1)+int(index_2))
 
 def version():
-    print("Version 1.0.0")    
+    current_version = '1.2.0'
+
+    if(current_version == '1.0.0'):
+        print("Version: " + current_version)
+        print("* Created the program.")
+
+    elif(current_version == '1.2.0'):
+        print("Version: " + current_version)
+        print("* Updated functions")
+        print("* Cleaned up the program")
+
+    else:
+        print(" Error with Function: \"version()\"")
+    
 
 def footer():
     print("Thank you for using Essence of Zen's program!")
@@ -72,45 +85,61 @@ def add_arrays(array_1, array_2):
     
     #print("TEST " +final_array)
     return final_array
-    
-#===========================================================#
-# Main Program (Note to self: Make a main function later
-version()
-print()
 
-#Get input from user
-user_binary_1 = input("Input binary number: ")
-user_binary_2 = input("Input binary number: ")
-print()
+def set_binary_length(binary):
+    while(len(binary) < 8):
+        binary.insert(0, '0')
+    return binary
 
-#Let's make them into an array now
-user_binary_1 = list(user_binary_1)
-user_binary_2 = list(user_binary_2)
+#-----------------------------
+def main():
+    version()
+    print()
+    eoz_module.print_information()
 
-#print them to check
-print(user_binary_1)
-print(user_binary_2)
+    #Get input from user
+    user_binary_1 = input("Input binary number: ")
+    user_binary_2 = input("Input binary number: ")
+    print()
 
-#Now, we need to make sure both binary numbers have the same length of numbers
-while(len(user_binary_1) < 8):
-    user_binary_1.insert(0, '0')
-while(len(user_binary_2) < 8):
-    user_binary_2.insert(0, '0')
+    #Let's make them into an array now 
+    user_binary_1 = list(user_binary_1)
+    user_binary_2 = list(user_binary_2)
 
-#We can then print to check the arrays
-print(user_binary_1)
-print(user_binary_2)
+    #print them to check
+    print("User Binary input 1: " + ''.join(user_binary_1))
+    print("User Binary input 2: " + ''.join(user_binary_2))
 
-print()
-
-#Testing function
-#my_sum = add_indexes(user_binary_1[7], user_binary_2[7])
-#print(my_sum)
+    #Now, we need to make sure both binary numbers have the same length of numbers
+    user_binary_1 = set_binary_length(user_binary_1) #Now using the new function
+    user_binary_2 = set_binary_length(user_binary_2)
 
 
-print()
-final_array_sum = add_arrays(user_binary_1, user_binary_2)
-print(final_array_sum)
+    #We can then print to check the arrays
+    print("\nPrinting New Arrays")
+    print(user_binary_1)
+    print(user_binary_2)
+    print()
 
-print()
-footer()
+    #Print out the compressed text
+    print("Printing New Arrays as compressed Binary")
+    print("Binary 1: " + ''.join(user_binary_1))
+    print("Binary 2: " + ''.join(user_binary_2))
+
+    #Testing function
+    #my_sum = add_indexes(user_binary_1[7], user_binary_2[7])
+    #print(my_sum)
+
+
+    print()
+    final_array_sum = add_arrays(user_binary_1, user_binary_2)
+    print("Final Array")
+    print(final_array_sum)
+    string_final_array_sum = [str(index) for index in final_array_sum]
+    print("Final Binary: " + ''.join(string_final_array_sum))
+
+    print()
+    footer()
+#---------------------------------
+
+main()
