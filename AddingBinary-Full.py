@@ -8,9 +8,11 @@
 # The program was built to add simple bytes. Going over will result in an error.
 # Will add a cap to limit the final product.
 #-----------
+
+# Import modules/libraries
 import eoz_module
 
-#Full Way of doing it
+#Full Way of doing it - Check the easy file for shorter faster method
 #=========================================#
 # Functions
 
@@ -92,6 +94,7 @@ def set_binary_length(binary):
     return binary
 
 #-----------------------------
+# The main function which runs the core of the code
 def main():
     version()
     print()

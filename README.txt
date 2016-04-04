@@ -1,0 +1,1 @@
+This is a simple project utilized for teaching users about git as well as teaching some techniques about Python coding.
